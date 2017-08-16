@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "Part3";
+}
+
+<style>
+    input {
+        padding: 5px;
+        border: 1px solid #A5A5A5;
+    }
+    input.ng-dirty.ng-invalid {
+        border: 1px solid rgb(255, 0, 0);
+        background-color:rgb(255, 244, 244)
+    }
+    .error {
+        color: red;
+    }
+</style>
+
+<h2>Part3 - Create login page</h2>
+
+<div ng-controller="Part3Controller">
+    <form novalidate name="f1" ng-submit="Login()">
+        <div style="color:rgb(142,2,2)">{{Message}}</div>
+        <table ng-show="!IsLoginIn">
+            <tr>
+                <td>Username: </td>
+                <td>
+                    <input type="text" ng-model="LoginData.Username" name="cUsername" ng-class="Submitted?'ng-dirty':''" required autofocus />
+                    <span class="error" ng-show="(f1.cUsername.$dirty || Submitted) && f1.cUsername.$error.required">Username required</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Password: </td>
+                <td>
+                    <input type="password" ng-model="LoginData.Password" name="cPassword" ng-class="Submitted?'ng-dirty':''" required autofocus />
+                    <span class="error" ng-show="(f1.cPassword.$dirty || Submitted) && f1.cPassword.$error.required">Password required</span>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Login" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+@section scripts{
+    <script src="~/app/AngularController/Part3Controller.js"></script>
+}
