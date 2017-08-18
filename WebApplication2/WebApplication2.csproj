@@ -148,6 +148,7 @@
     <Content Include="app\AngularController\Part2Controller.js" />
     <Content Include="app\AngularController\Part3Controller.js" />
     <Content Include="app\AngularController\Part4Controller.js" />
+    <Content Include="app\AngularController\Part5Controller.js" />
     <Content Include="app\MyApp.js" />
     <Content Include="App_Data\MyDatabase.mdf" />
     <Content Include="App_Data\MyDatabase_log.ldf">
