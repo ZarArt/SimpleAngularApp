@@ -28,5 +28,14 @@ namespace WebApplication2.Controllers
         {
             return View();
         }
+        public ActionResult Part5()
+        {
+            return View();
+        }
+
+        public ActionResult Part6()
+        {
+            return View();
+        }
     }
 }

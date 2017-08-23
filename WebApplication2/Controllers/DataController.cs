@@ -40,5 +40,52 @@ namespace WebApplication2.Controllers
             }
             return new JsonResult { Data = Employees, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
+
+        public JsonResult GetCountries()
+        {
+            List<Country> allCountries = new List<Country>();
+            using (MyDatabaseEntities dc = new MyDatabaseEntities())
+            {
+                allCountries = dc.Countries.OrderBy(a => a.CountryName).ToList();
+            }
+            return new JsonResult { Data = allCountries, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
+
+        public JsonResult GetStates(int countryID)
+        {
+            List<State> allStates = new List<State>();
+            using (MyDatabaseEntities dc = new MyDatabaseEntities())
+            {
+                allStates = dc.States.Where(a => a.CountryID.Equals(countryID)).OrderBy(a => a.StateName).ToList();
+            }
+            return new JsonResult { Data = allStates, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
+
+        public JsonResult Register(User u)
+        {
+            string message = "";
+            if (ModelState.IsValid)
+            {
+                using (MyDatabaseEntities dc = new MyDatabaseEntities())
+                {
+                    var user = dc.Users.Where(a => a.UserName.Equals(u.UserName)).FirstOrDefault();
+                    if (user == null)
+                    {
+                        dc.Users.Add(u);
+                        dc.SaveChanges();
+                        message = "Success";
+                    }
+                    else
+                    {
+                        message = "Username is not available!";
+                    }
+                }
+            }
+            else
+            {
+                message = "Failed!";
+            }
+            return new JsonResult { Data = message, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
     }
 }

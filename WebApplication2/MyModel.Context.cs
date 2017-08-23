@@ -28,5 +28,7 @@ namespace WebApplication2
         public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<Country> Countries { get; set; }
+        public virtual DbSet<State> States { get; set; }
     }
 }

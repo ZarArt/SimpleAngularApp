@@ -6,6 +6,15 @@
     <title>@ViewBag.Title</title>
 </head>
 <body ng-app="MyApp">
+    <ul class="menuUl">
+        <li><a href="#" style="color:black"><b>Angular Example :</b></a></li>
+        <li>@Html.ActionLink("Part1", "Index")</li>
+        <li>@Html.ActionLink("Part2", "Part2")</li>
+        <li>@Html.ActionLink("Part3", "Part3")</li>
+        <li>@Html.ActionLink("Part4", "Part4")</li>
+        <li>@Html.ActionLink("Part5", "Part5")</li>
+    </ul>
+    <div></div>
     @RenderBody()
 
     @Scripts.Render("~/bundles/angular")
