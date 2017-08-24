@@ -50,9 +50,9 @@
             method: 'POST',
             data: JSON.stringify(data),
             headers: { 'content-type': 'application/json' }
-        }).success(function (d) {
+        }).then(function (d) {
             defer.resolve(d);
-        }).error(function(e) {
+        },function(e) {
             alert('Error!');
             defer.reject(e);
         });
